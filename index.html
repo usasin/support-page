@@ -1,110 +1,184 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <title>AI-Nego • Centre d’assistance</title>
-  <meta name="description"
-        content="Support officiel pour l’application AI-Nego – Quiz Vente Pro : FAQ, contact 24 h/24, méthode 6 étapes, suppression de compte, etc.">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="https://usasin.github.io/support-page/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<html lang="fr">
 
-  <!-- AOS (animate on scroll) -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI NEGO – Support</title>
+
   <style>
-    :root{
-      --pri:#0052cc; --pri-light:#e6f0ff; --txt:#222; --bg:#f5f7fb; --card:#fff;
-      --pri-dark:#2d8fff; --txt-dark:#ddd; --bg-dark:#0d1117; --card-dark:#161b22;
+    :root {
+      --blue: #0058d4;
+      --blue-light: #ebf2ff;
+      --grey: #424242;
     }
-    [data-theme=dark]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:"Poppins",sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
-    a{color:var(--pri);text-decoration:none} a:hover{text-decoration:underline}
-    header{background:var(--pri);color:#fff;padding:60px 20px;text-align:center;clip-path:polygon(0 0,100% 0,100% 85%,0 100%)}
-    header h1{font-size:2.8rem;margin-bottom:14px}
-    header p{font-size:1.15rem}
-    .container{max-width:960px;margin:-80px auto 60px;padding:0 16px}
-    section{background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.07);padding:40px 32px;margin-bottom:32px}
-    h2{color:var(--pri);margin-bottom:18px;font-size:1.7rem}
-    ul{margin-left:1.1rem}
-    li{margin:6px 0}
-    .badge{display:inline-block;background:var(--pri-light);color:var(--pri);padding:2px 8px;border-radius:4px;font-size:.8rem;margin-left:4px}
-    /* responsive */
-    @media(max-width:640px){
-      header h1{font-size:2rem}  header{padding:42px 14px}
+
+    * {
+      box-sizing: border-box;
     }
-    /* dark-mode toggle */
-    .theme-toggle{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:var(--pri);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);}
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: var(--grey);
+      background: #fafafa;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: var(--blue);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    /* ---------- MAIN ---------- */
+    main {
+      max-width: 820px;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .05);
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin: 0 0 .75rem;
+      color: var(--blue);
+      text-align: center;
+      padding-top: 2.5rem;
+    }
+
+    main p {
+      margin: .75rem 0 2rem;
+      text-align: center;
+    }
+
+    /* ---------- FORM ---------- */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 0 1.5rem 3rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+    }
+
+    input,
+    textarea {
+      margin-top: .35rem;
+      padding: .7rem .9rem;
+      font-size: 1rem;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 2px solid var(--blue);
+      border-color: var(--blue);
+    }
+
+    button {
+      align-self: flex-start;
+      background: var(--blue);
+      border: none;
+      color: #fff;
+      padding: .75rem 1.4rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    button:hover {
+      background: #0046ac;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      margin: 3rem 0 2rem;
+      text-align: center;
+      font-size: .85rem;
+      color: #818181;
+    }
   </style>
 </head>
+
 <body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <h1>AI NEGO – Support</h1>
+    <a href="mailto:support@ai-nego.com">support@ai-nego.com</a>
+  </header>
 
-<header data-aos="fade-down">
-  <h1>Support&nbsp;AI-Nego</h1>
-  <p>Contact&nbsp;24 h/24&nbsp;: <a href="mailto:support@ai-nego.com" style="color:#fff;text-decoration:underline;">support@ai-nego.com</a></p>
-</header>
-
-<div class="container">
-
-  <section data-aos="fade-up">
-    <h2>⚡ Méthode 6 étapes<span class="badge">Universelle 2025</span></h2>
-    <ul>
-      <li>Accroche personnalisée</li>
-      <li>Découverte du besoin</li>
-      <li>Déclencheur émotionnel</li>
-      <li>Proposition de valeur</li>
-      <li>Réponse aux objections</li>
-      <li>Closing &amp; accord final</li>
-    </ul>
-  </section>
-
-  <section data-aos="fade-up" data-aos-delay="100">
-    <h2>🎮 Quiz &amp; IA Coach</h2>
-    <p>• Effet de testing, répétition espacée, feedback instantané<br>
-       • Gamification complète (badges, classement mondial, défis multi-joueur)<br>
-       • Entraîne-toi sans jugement : IA vocale ou texte, disponible 24/7</p>
-  </section>
-
-  <section data-aos="fade-up" data-aos-delay="200">
-    <h2>FAQ &amp; Assistance</h2>
-    <p><strong>Supprimer mon compte</strong><br>
-       Ouvre l’app ➜ <em>Paramètres</em> ➜ <em>Supprimer mon compte</em> puis confirme.  
-       La suppression est immédiate et irréversible.</p>
-    <p><strong>Récupération de mot de passe</strong><br>
-       Écran de connexion ➜ <em>Mot de passe oublié</em>. Suis le lien envoyé par e-mail.</p>
-    <p><strong>Signaler un bug</strong><br>
-       Envoie une capture d’écran + description des étapes à  
-       <a href="mailto:support@ai-nego.com">support@ai-nego.com</a>.</p>
-  </section>
-
-  <section data-aos="fade-up" data-aos-delay="300">
-    <h2>Téléchargement</h2>
+  <!-- ===== MAIN ===== -->
+  <main>
+    <h2>Besoin d’aide&nbsp;?</h2>
     <p>
-      • <a href="https://apps.apple.com/">App Store</a><br>
-      • <a href="https://play.google.com/">Google Play</a>
+      Remplis simplement le formulaire ci-dessous&nbsp;– notre équipe te répond
+      sous <strong>24&nbsp;à&nbsp;48 h</strong>.
     </p>
-  </section>
 
-</div>
+    <!-- ===== CONTACT FORM (FORMSPREE) ===== -->
+    <form action="https://formspree.io/f/xvgrdkgl" method="POST">
+      <label>
+        Ton prénom&nbsp;*
+        <input type="text" name="name" placeholder="Ex. : Sarah" required />
+      </label>
 
-<footer style="text-align:center;font-size:.8rem;color:#888;margin-bottom:40px" data-aos="fade">
-  © 2025 AI-Nego — Tous droits réservés
-</footer>
+      <label>
+        Ton e-mail&nbsp;*
+        <input type="email" name="email" placeholder="Ex. : sarah@example.com" required />
+      </label>
 
-<!-- theme toggle -->
-<div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
+      <label>
+        Sujet
+        <input type="text" name="subject" placeholder="Objet de ta demande" />
+      </label>
 
-<!-- scripts -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({duration:700,once:true});</script>
-<script>
-function toggleTheme(){
-  const root=document.documentElement;
-  const current=root.getAttribute("data-theme")||"light";
-  root.setAttribute("data-theme", current==="light" ? "dark":"light");
-}
-</script>
+      <label>
+        Message&nbsp;*
+        <textarea name="message" rows="6" placeholder="Décris ton problème ou ta question…" required></textarea>
+      </label>
+
+      <!-- Champ honeypot invisible pour réduire le spam -->
+      <input type="text" name="_honey" style="display:none" />
+
+      <!-- Redirection après succès (optionnelle) -->
+      <!-- <input type="hidden" name="_redirect" value="https://ai-nego.com/merci" /> -->
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2025 AI NEGO – Quiz Vente Pro
+  </footer>
 </body>
+
 </html>
