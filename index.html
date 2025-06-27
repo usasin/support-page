@@ -11,174 +11,105 @@
       --blue: #0058d4;
       --blue-light: #ebf2ff;
       --grey: #424242;
+      --orange: #ff9300;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-      color: var(--grey);
-      background: #fafafa;
+      line-height: 1.5; color: var(--grey); background: #fafafa;
     }
 
     /* ---------- HEADER ---------- */
     header {
-      background: var(--blue);
-      color: #fff;
-      padding: 1rem 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--blue); color: #fff;
+      padding: 1rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
     }
+    header h1 { font-size: 1.4rem; margin: 0; font-weight: 600; letter-spacing: .5px; }
+    header a { color: #fff; text-decoration: underline; font-weight: 500; }
 
-    header h1 {
-      font-size: 1.4rem;
-      margin: 0;
-      font-weight: 600;
-      letter-spacing: .5px;
-    }
-
-    header a {
-      color: #fff;
-      text-decoration: underline;
-      font-weight: 500;
-    }
-
-    /* ---------- MAIN ---------- */
+    /* ---------- MAIN (formulaire) ---------- */
     main {
-      max-width: 820px;
-      margin: 2.5rem auto;
-      padding: 0 1.25rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, .05);
+      max-width: 820px; margin: 2.5rem auto; padding: 0 1.25rem;
+      background: #fff; border-radius: 12px; box-shadow: 0 4px 14px rgba(0, 0, 0, .05);
     }
+    main h2 { font-size: 2rem; margin: 0 0 .75rem; color: var(--blue); text-align: center; padding-top: 2.5rem; }
+    main p  { margin: .75rem 0 2rem; text-align: center; }
 
-    main h2 {
-      font-size: 2rem;
-      margin: 0 0 .75rem;
-      color: var(--blue);
-      text-align: center;
-      padding-top: 2.5rem;
+    form { display: flex; flex-direction: column; gap: 1.2rem; padding: 0 1.5rem 3rem; }
+    label { display: flex; flex-direction: column; font-weight: 500; }
+    input, textarea {
+      margin-top: .35rem; padding: .7rem .9rem; font-size: 1rem;
+      border: 1px solid #ced4da; border-radius: 8px; resize: vertical;
     }
-
-    main p {
-      margin: .75rem 0 2rem;
-      text-align: center;
-    }
-
-    /* ---------- FORM ---------- */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      padding: 0 1.5rem 3rem;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 500;
-    }
-
-    input,
-    textarea {
-      margin-top: .35rem;
-      padding: .7rem .9rem;
-      font-size: 1rem;
-      border: 1px solid #ced4da;
-      border-radius: 8px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: 2px solid var(--blue);
-      border-color: var(--blue);
-    }
-
+    input:focus, textarea:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
     button {
-      align-self: flex-start;
-      background: var(--blue);
-      border: none;
-      color: #fff;
-      padding: .75rem 1.4rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background .2s;
+      align-self: flex-start; background: var(--blue); border: none; color: #fff;
+      padding: .75rem 1.4rem; font-size: 1rem; border-radius: 8px; cursor: pointer; transition: background .2s;
     }
+    button:hover { background: #0046ac; }
 
-    button:hover {
-      background: #0046ac;
+    /* ---------- SECTION SAM ---------- */
+    .promo {
+      max-width: 820px; margin: 3rem auto 4rem; padding: 2.5rem 1.5rem;
+      background: var(--blue-light); border-radius: 16px; text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
+    }
+    .promo h3 { margin: 0 0 1rem; font-size: 1.75rem; color: var(--blue); }
+    .promo img {
+      width: 220px; max-width: 60%; height: auto; margin: 0 auto 1.5rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    .cta {
+      display: inline-block; background: var(--orange); color: #000; font-weight: 600;
+      padding: .9rem 1.6rem; border-radius: 10px; text-decoration: none; transition: transform .15s;
+    }
+    .cta:hover { transform: scale(1.04); }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     /* ---------- FOOTER ---------- */
-    footer {
-      margin: 3rem 0 2rem;
-      text-align: center;
-      font-size: .85rem;
-      color: #818181;
-    }
+    footer { margin: 3rem 0 2rem; text-align: center; font-size: .85rem; color: #818181; }
   </style>
 </head>
 
 <body>
+
   <!-- ===== HEADER ===== -->
   <header>
     <h1>AI NEGO – Support</h1>
     <a href="mailto:support@ai-nego.com">support@ai-nego.com</a>
   </header>
 
-  <!-- ===== MAIN ===== -->
+  <!-- ===== FORMULAIRE ===== -->
   <main>
     <h2>Besoin d’aide&nbsp;?</h2>
-    <p>
-      Remplis simplement le formulaire ci-dessous&nbsp;– notre équipe te répond
-      sous <strong>24&nbsp;à&nbsp;48 h</strong>.
-    </p>
+    <p>Remplis simplement le formulaire&nbsp;– nous répondons sous <strong>24-48&nbsp;h</strong>.</p>
 
-    <!-- ===== CONTACT FORM (FORMSPREE) ===== -->
     <form action="https://formspree.io/f/xvgrdkgl" method="POST">
-      <label>
-        Ton prénom&nbsp;*
-        <input type="text" name="name" placeholder="Ex. : Sarah" required />
-      </label>
+      <label>Ton prénom *<input type="text" name="name" placeholder="Ex. : Sarah" required></label>
+      <label>Ton e-mail *<input type="email" name="email" placeholder="Ex. : sarah@example.com" required></label>
+      <label>Sujet<input type="text" name="subject" placeholder="Objet de ta demande"></label>
+      <label>Message *<textarea name="message" rows="6" placeholder="Décris ton problème ou ta question…" required></textarea></label>
 
-      <label>
-        Ton e-mail&nbsp;*
-        <input type="email" name="email" placeholder="Ex. : sarah@example.com" required />
-      </label>
-
-      <label>
-        Sujet
-        <input type="text" name="subject" placeholder="Objet de ta demande" />
-      </label>
-
-      <label>
-        Message&nbsp;*
-        <textarea name="message" rows="6" placeholder="Décris ton problème ou ta question…" required></textarea>
-      </label>
-
-      <!-- Champ honeypot invisible pour réduire le spam -->
-      <input type="text" name="_honey" style="display:none" />
-
-      <!-- Redirection après succès (optionnelle) -->
-      <!-- <input type="hidden" name="_redirect" value="https://ai-nego.com/merci" /> -->
-
+      <input type="text" name="_honey" style="display:none">
       <button type="submit">Envoyer</button>
     </form>
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    © 2025 AI NEGO – Quiz Vente Pro
-  </footer>
-</body>
+  <!-- ===== SECTION SAM ===== -->
+  <section class="promo">
+    <h3>Sam, ton Coach IA pour devenir un as de la négo&nbsp;!</h3>
+    <img src="sam.png" alt="Sam – coach IA mascotte">
+    <a class="cta" href="#download">Teste gratuitement ta négociation&nbsp;avec&nbsp;Sam</a>
+  </section>
 
+  <!-- ===== FOOTER ===== -->
+  <footer>© 2025 AI NEGO – Quiz Vente Pro</footer>
+
+</body>
 </html>
