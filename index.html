@@ -4,82 +4,61 @@
   <meta charset="UTF-8">
   <title>AI-Nego • Centre d’assistance</title>
   <meta name="description"
-        content="Support officiel AI-Nego – FAQ, contact 24 h/24, méthode 6 étapes, formulaire de contact, suppression de compte.">
+        content="Support officiel AI-Nego – FAQ, contact 24 h/24, méthode 6 étapes, formulaire, suppression de compte.">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <style>
-    /*  ---------- variables clair / sombre ---------- */
     :root{
       --pri:#0052cc;--pri-light:#e6f0ff;--txt:#222;--bg:#f5f7fb;--card:#fff;
-      --pri-dark:#2d8fff;--txt-dark:#ddd;--bg-dark:#0d1117;--card-dark:#161b22
-    }
-    [data-theme=dark]{
-      --pri:var(--pri-dark);--txt:var(--txt-dark);
-      --bg:var(--bg-dark);--card:var(--card-dark)
-    }
-
-    /*  ---------- reset ---------- */
+      --pri-dark:#2d8fff;--txt-dark:#ddd;--bg-dark:#0d1117;--card-dark:#161b22}
+    [data-theme=dark]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
     *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins",sans-serif}
     body{background:var(--bg);color:var(--txt);line-height:1.6}
-
-    /*  ---------- en-tête ondulé ---------- */
     header{background:var(--pri);color:#fff;padding:70px 20px 90px;text-align:center;
            clip-path:polygon(0 0,100% 0,100% 85%,0 100%)}
     h1{font-size:2.6rem;margin-bottom:14px}
     .btn-mail{display:inline-block;background:#fff;color:var(--pri);padding:10px 18px;
               border-radius:30px;font-weight:600;transition:.2s}
     .btn-mail:hover{background:var(--pri-light);text-decoration:none}
-
-    /*  ---------- conteneur général ---------- */
     .container{max-width:960px;margin:-80px auto 60px;padding:0 16px}
-
     section{background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.06);
             padding:40px 32px;margin-bottom:32px}
     h2{color:var(--pri);margin-bottom:18px;font-size:1.7rem}
     ul{margin-left:1.1rem} li{margin:6px 0}
     .badge{background:var(--pri-light);color:var(--pri);padding:2px 8px;border-radius:4px;font-size:.8rem;margin-left:4px}
     a{color:var(--pri)} a:hover{text-decoration:underline}
-
-    /*  ---------- section Sam + CTA ---------- */
-    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-    .mascot{width:260px;max-width:80%;height:auto}
-    .cta{background:var(--pri);color:#fff;border:0;padding:14px 22px;border-radius:8px;
-         font-size:1.05rem;font-weight:600;cursor:pointer;transition:.2s}
-    .cta:hover{background:#003a9e}
-
-    /*  ---------- formulaire ---------- */
+    /* formulaire */
     form{display:flex;flex-direction:column;gap:14px}
     input,textarea{padding:12px 14px;border:1px solid #ccc;border-radius:6px;font:inherit}
     textarea{min-height:120px;resize:vertical}
     button[type=submit]{background:var(--pri);color:#fff;border:0;padding:12px;border-radius:6px;
                          font-weight:600;cursor:pointer;transition:.2s}
     button[type=submit]:hover{background:#003a9e}
-
-    /*  ---------- toggle dark-mode ---------- */
+    /* responsive */
+    @media(max-width:640px){h1{font-size:2rem} header{padding:60px 14px 80px}}
+    /* dark-mode toggle */
     .theme-toggle{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;
       background:var(--pri);display:flex;align-items:center;justify-content:center;color:#fff;
       cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-
-    /*  ---------- responsive ---------- */
-    @media(max-width:640px){
-      h1{font-size:2rem} header{padding:60px 14px 80px}
-      .mascot{width:200px}
-    }
   </style>
 </head>
 <body>
 
-<!-- ───── en-tête ───── -->
 <header data-aos="fade-down">
   <h1>Support AI-Nego</h1>
   <a href="mailto:support@ai-nego.com" class="btn-mail">📧 support@ai-nego.com</a>
 </header>
 
+<!-- Bannière Sam 16:7 – le clic mène au formulaire -->
+<a href="#formulaire" data-aos="zoom-in-up" style="display:block;max-width:960px;margin:-60px auto 40px">
+  <img src="Sam.png" alt="Sam, coach IA, montre le bouton"
+       style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)">
+</a>
+
 <div class="container">
 
-  <!-- ───── méthode 6 étapes ───── -->
   <section data-aos="fade-up">
     <h2>⚡ Méthode 6 étapes<span class="badge">Universelle 2025</span></h2>
     <ul>
@@ -89,20 +68,12 @@
     </ul>
   </section>
 
-  <!-- ───── Sam + CTA ───── -->
-  <section class="hero" data-aos="zoom-in" data-aos-delay="100">
-    <img src="sam.png" alt="Sam – coach IA mascotte" class="mascot">
-    <button class="cta">Teste gratuitement ta négociation avec Sam</button>
-  </section>
-
-  <!-- ───── Quiz & gamification ───── -->
-  <section data-aos="fade-up" data-aos-delay="200">
+  <section data-aos="fade-up" data-aos-delay="100">
     <h2>🎮 Quiz, IA &amp; Gamification</h2>
-    <p>Effet de testing, répétition espacée, badges, classement mondial et défis multi-joueurs.</p>
+    <p>Effet de testing, répétition espacée, badges, classement mondial et défis multijoueur.</p>
   </section>
 
-  <!-- ───── FAQ ───── -->
-  <section data-aos="fade-up" data-aos-delay="300">
+  <section data-aos="fade-up" data-aos-delay="200">
     <h2>FAQ</h2>
     <p><strong>Supprimer mon compte</strong><br>
        App › <em>Paramètres</em> › <em>Supprimer mon compte</em> puis confirme.</p>
@@ -110,9 +81,9 @@
        Écran de connexion › <em>Mot de passe oublié</em>.</p>
   </section>
 
-  <!-- ───── formulaire de contact ───── -->
-  <section data-aos="fade-up" data-aos-delay="400">
+  <section id="formulaire" data-aos="fade-up" data-aos-delay="300">
     <h2>📝 Formulaire de contact</h2>
+    <!-- Remplace l’ID si besoin -->
     <form action="https://formspree.io/f/xvgrdkgl" method="POST">
       <input type="text" name="name" placeholder="Votre nom" required>
       <input type="email" name="_replyto" placeholder="Votre e-mail" required>
@@ -130,10 +101,8 @@
   © 2025 AI-Nego — Tous droits réservés
 </footer>
 
-<!-- bouton clair / sombre -->
 <div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
 
-<!-- scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init({duration:700,once:true});</script>
 <script>
