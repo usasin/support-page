@@ -1,116 +1,188 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <title>AI-Nego • Centre d’assistance</title>
+  <meta charset="UTF-8" />
+  <title>AI-Nego • Support & Présentation</title>
+
+  <!-- SEO & responsive -->
   <meta name="description"
-        content="Support officiel AI-Nego – FAQ, contact 24 h/24, méthode 6 étapes, formulaire, suppression de compte.">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        content="AI-Nego – Quiz & Coach IA. Centre d’assistance, FAQ, formulaire de contact, liens vers les stores."/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+  <!-- Favicon & polices -->
+  <link rel="icon" href="favicon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <!-- STYLES -->
   <style>
+    /* -------- Variables de thème -------- */
     :root{
-      --pri:#0052cc;--pri-light:#e6f0ff;--txt:#222;--bg:#f5f7fb;--card:#fff;
-      --pri-dark:#2d8fff;--txt-dark:#ddd;--bg-dark:#0d1117;--card-dark:#161b22}
+      --pri:#0074ff;         --pri-light:#e7f0ff;
+      --txt:#202124;         --bg:#f5f7fb;      --card:#fff;
+      --pri-dark:#2d8fff;    --txt-dark:#e8eaed;--bg-dark:#0d1117;--card-dark:#161b22;
+    }
     [data-theme=dark]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins",sans-serif}
-    body{background:var(--bg);color:var(--txt);line-height:1.6}
-    header{background:var(--pri);color:#fff;padding:70px 20px 90px;text-align:center;
-           clip-path:polygon(0 0,100% 0,100% 85%,0 100%)}
-    h1{font-size:2.6rem;margin-bottom:14px}
-    .btn-mail{display:inline-block;background:#fff;color:var(--pri);padding:10px 18px;
-              border-radius:30px;font-weight:600;transition:.2s}
-    .btn-mail:hover{background:var(--pri-light);text-decoration:none}
-    .container{max-width:960px;margin:-80px auto 60px;padding:0 16px}
-    section{background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.06);
-            padding:40px 32px;margin-bottom:32px}
-    h2{color:var(--pri);margin-bottom:18px;font-size:1.7rem}
-    ul{margin-left:1.1rem} li{margin:6px 0}
-    .badge{background:var(--pri-light);color:var(--pri);padding:2px 8px;border-radius:4px;font-size:.8rem;margin-left:4px}
-    a{color:var(--pri)} a:hover{text-decoration:underline}
-    /* formulaire */
-    form{display:flex;flex-direction:column;gap:14px}
-    input,textarea{padding:12px 14px;border:1px solid #ccc;border-radius:6px;font:inherit}
+
+    /* -------- Reset & base -------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Poppins",sans-serif;line-height:1.55;background:var(--bg);color:var(--txt);scroll-behavior:smooth}
+
+    h1,h2,h3{font-weight:600;letter-spacing:-.3px}
+    a{color:var(--pri);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* -------- Layout -------- */
+    header.hero{
+      background:linear-gradient(135deg,#011627 0%,#06346a 50%,#004aad 100%);
+      color:#fff;padding:90px 20px 120px;text-align:center;
+      clip-path:polygon(0 0,100% 0,100% 83%,0 100%);
+    }
+    .container{max-width:1100px;margin:-100px auto 60px;padding:0 18px}
+    section{background:var(--card);border-radius:14px;padding:50px 40px;margin:0 auto 38px;
+            box-shadow:0 8px 28px rgba(0,0,0,.06)}
+
+    /* -------- Boutique -------- */
+    .store-badges{display:flex;gap:16px;justify-content:center;margin-top:28px}
+    .store-badges img{height:56px;width:auto;transition:.2s transform}
+    .store-badges img:hover{transform:scale(1.05)}
+
+    /* -------- Carrousel visuels -------- */
+    .carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding-bottom:8px}
+    .carousel img{flex:0 0 auto;width:100%;max-width:760px;border-radius:12px;scroll-snap-align:center;
+                  box-shadow:0 6px 18px rgba(0,0,0,.15)}
+    /* masque dégradé sur les côtés pour l’esthétique */
+    .carousel-wrapper{position:relative}
+    .carousel-wrapper::before,
+    .carousel-wrapper::after{
+      content:'';position:absolute;top:0;bottom:0;width:70px;pointer-events:none;
+      background:linear-gradient(to right,var(--bg) 10%,transparent)
+    }
+    .carousel-wrapper::after{right:0;transform:scaleX(-1)}
+
+    /* -------- Cartes FAQ & Méthode -------- */
+    ul.checklist{margin-left:1.2rem}
+    ul.checklist li{margin:6px 0;list-style: "✔️  ";padding-left:.4rem}
+
+    /* -------- Formulaires -------- */
+    form{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+    input,textarea{font:inherit;border:1px solid #ccd1d6;border-radius:6px;padding:12px 14px}
     textarea{min-height:120px;resize:vertical}
-    button[type=submit]{background:var(--pri);color:#fff;border:0;padding:12px;border-radius:6px;
-                         font-weight:600;cursor:pointer;transition:.2s}
-    button[type=submit]:hover{background:#003a9e}
-    /* responsive */
-    @media(max-width:640px){h1{font-size:2rem} header{padding:60px 14px 80px}}
-    /* dark-mode toggle */
-    .theme-toggle{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;
-      background:var(--pri);display:flex;align-items:center;justify-content:center;color:#fff;
-      cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+    button[type=submit]{background:var(--pri);color:#fff;border:0;padding:14px 18px;border-radius:6px;font-weight:600;
+                        cursor:pointer;transition:.2s}
+    button[type=submit]:hover{background:#005ed6}
+
+    /* -------- Theme toggle --------*/
+    .theme-toggle{position:fixed;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;
+      background:var(--pri);display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:10}
+
+    /* -------- Responsive -------- */
+    @media(max-width:680px){
+      header.hero{padding:70px 16px 90px}
+      h1{font-size:2.1rem}
+    }
   </style>
 </head>
 <body>
 
-<header data-aos="fade-down">
-  <h1>Support AI-Nego</h1>
-  <a href="mailto:support@ai-nego.com" class="btn-mail">📧 support@ai-nego.com</a>
-</header>
+<!-- ========= HERO ========= -->
+<header class="hero" data-aos="fade-down">
+  <h1 style="font-size:2.8rem;margin-bottom:18px">AI-Nego • Coach & Quiz Vente</h1>
+  <p style="opacity:.9;font-size:1.1rem">Ton accompagnateur IA pour devenir un as de la négo.</p>
 
-<!-- Bannière Sam 16:7 – le clic mène au formulaire -->
-<a href="#formulaire" data-aos="zoom-in-up" style="display:block;max-width:960px;margin:-60px auto 40px">
-  <img src="Sam.png" alt="Sam, coach IA, montre le bouton"
-       style="display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)">
-</a>
+  <!-- Badges stores -->
+  <div class="store-badges" data-aos="zoom-in" data-aos-delay="400">
+    <a href="https://play.google.com/store/apps/details?id=com.quiz_commercial2024.quiz_commercial2024">
+      <img src="https://developer.android.com/images/brand/fr_generic_rgb_wo_45.png"
+           alt="Disponible sur Google Play">
+    </a>
+    <!-- Lien App Store : remplace # quand tu l’auras -->
+    <a href="#" onclick="alert('Lien App Store à venir !');return false;">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+           alt="Bientôt sur l’App Store">
+    </a>
+  </div>
+</header>
 
 <div class="container">
 
+  <!-- ========= CARROUSEL VISUELS ========= -->
   <section data-aos="fade-up">
-    <h2>⚡ Méthode 6 étapes<span class="badge">Universelle 2025</span></h2>
-    <ul>
-      <li>Accroche personnalisée</li><li>Découverte du besoin</li>
-      <li>Déclencheur émotionnel</li><li>Proposition de valeur</li>
-      <li>Réponse aux objections</li><li>Closing &amp; accord final</li>
+    <h2>✨ Aperçu de l’app</h2>
+    <p style="margin-bottom:24px">Un avant-goût des écrans clés&nbsp;:</p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel">
+        <!-- Télécharge les visuels dans ton repo et mets le bon chemin -->
+        <img src="visuels/sam-parcours.png"  alt="Parcours adapté à chaque métier">
+        <img src="visuels/sam-method.png"    alt="La méthode 6 étapes">
+        <img src="visuels/sam-defi.png"      alt="Défi tes amis">
+        <img src="visuels/sam-quiz.png"      alt="Quiz chronométrés">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========= MÉTHODE 6 ÉTAPES ========= -->
+  <section data-aos="fade-up" data-aos-delay="100">
+    <h2>⚡ Méthode 6 étapes&nbsp;<span style="background:var(--pri-light);color:var(--pri);font-size:.8rem;padding:2px 8px;border-radius:4px">Universelle</span></h2>
+    <ul class="checklist">
+      <li>Accroche personnalisée</li>
+      <li>Découverte du besoin</li>
+      <li>Déclencheur émotionnel</li>
+      <li>Proposition de valeur</li>
+      <li>Réponses aux objections</li>
+      <li>Closing &amp; accord final</li>
     </ul>
   </section>
 
-  <section data-aos="fade-up" data-aos-delay="100">
+  <!-- ========= QUIZ & GAMIFICATION ========= -->
+  <section data-aos="fade-up" data-aos-delay="200">
     <h2>🎮 Quiz, IA &amp; Gamification</h2>
-    <p>Effet de testing, répétition espacée, badges, classement mondial et défis multijoueur.</p>
+    <p>Effet de testing, répétition espacée, badges, classement mondial et défis multi-joueurs.</p>
   </section>
 
-  <section data-aos="fade-up" data-aos-delay="200">
+  <!-- ========= FAQ ========= -->
+  <section data-aos="fade-up" data-aos-delay="300">
     <h2>FAQ</h2>
     <p><strong>Supprimer mon compte</strong><br>
-       App › <em>Paramètres</em> › <em>Supprimer mon compte</em> puis confirme.</p>
+       App&nbsp;› <em>Paramètres</em> › <em>Supprimer mon compte</em>, puis confirme.</p>
     <p><strong>Mot de passe oublié</strong><br>
-       Écran de connexion › <em>Mot de passe oublié</em>.</p>
+       Écran de connexion&nbsp;› <em>Mot de passe oublié</em>.</p>
   </section>
 
-  <section id="formulaire" data-aos="fade-up" data-aos-delay="300">
-    <h2>📝 Formulaire de contact</h2>
-    <!-- Remplace l’ID si besoin -->
+  <!-- ========= FORMULAIRES ========= -->
+  <section data-aos="fade-up" data-aos-delay="400">
+    <h2>📝 Nous contacter</h2>
+    <p>Une question&nbsp;? Un bug&nbsp;? Écris-nous via le formulaire&nbsp;– réponse sous 24&nbsp;h&nbsp;!</p>
+
+    <!-- Remplace l’URL Formspree par la tienne -->
     <form action="https://formspree.io/f/xvgrdkgl" method="POST">
       <input type="text" name="name" placeholder="Votre nom" required>
       <input type="email" name="_replyto" placeholder="Votre e-mail" required>
       <textarea name="message" placeholder="Décrivez votre problème…" required></textarea>
       <button type="submit">Envoyer</button>
     </form>
-    <p style="font-size:.8rem;margin-top:8px;color:#666">
-      En envoyant ce formulaire, vous acceptez notre politique de confidentialité.
-    </p>
+    <p style="font-size:.8rem;margin-top:6px;color:#666">En envoyant ce formulaire, vous acceptez notre politique de confidentialité.</p>
   </section>
-
 </div>
 
-<footer style="text-align:center;font-size:.8rem;color:#888;margin-bottom:40px" data-aos="fade">
+<footer style="text-align:center;font-size:.8rem;color:#888;margin:40px 0" data-aos="fade">
   © 2025 AI-Nego — Tous droits réservés
 </footer>
 
+<!-- Thème clair / sombre -->
 <div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
 
+<!-- AOS + script -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init({duration:700,once:true});</script>
 <script>
-function toggleTheme(){
-  const root=document.documentElement;
-  const t=root.getAttribute("data-theme")||"light";
-  root.setAttribute("data-theme", t==="light"?"dark":"light");
-}
+ function toggleTheme(){
+   const root=document.documentElement;
+   const t=root.getAttribute("data-theme")||"light";
+   root.setAttribute("data-theme", t==="light"?"dark":"light");
+ }
 </script>
 </body>
 </html>
