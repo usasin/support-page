@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Nego • Politique de confidentialité</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex"> <!-- page légale, pas besoin de ranking -->
+  <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --pri:#0074ff;--pri-light:#e7f0ff;
+    --txt:#1e1f22;--bg:#f5f7fb;--card:#ffffffdd;--radius:14px;
+    --pri-dark:#2d8fff;--txt-dark:#e8eaed;--bg-dark:#0d1117;--card-dark:#161b22e6;
+  }
+  [data-theme="dark"]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Poppins",sans-serif;line-height:1.6;background:var(--bg);color:var(--txt)}
+  h1,h2{font-weight:600;letter-spacing:-.3px;margin-bottom:16px}
+  a{color:var(--pri)} a:hover{text-decoration:underline}
+
+  header{
+    background:linear-gradient(135deg,#021b34 0%,#004aad 100%);
+    color:#fff;text-align:center;padding:65px 18px 80px;
+    clip-path:polygon(0 0,100% 0,100% 85%,0 100%);
+  }
+  .wrap{max-width:840px;margin:-60px auto 60px;padding:0 18px}
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    padding:40px 38px;backdrop-filter:blur(8px);
+    box-shadow:0 10px 26px rgba(0,0,0,.07)
+  }
+  ul,ol{margin:12px 0 24px 22px}
+  li{margin:6px 0}
+  /* bouton retour */
+  .back{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:32px;padding:12px 18px;border-radius:8px;
+    background:var(--pri);color:#fff;font-weight:600;text-decoration:none;
+    transition:background .25s
+  }
+  .back:hover{background:#005ee0}
+  /* mode sombre bouton */
+  .theme-toggle{
+    position:fixed;right:20px;bottom:20px;width:50px;height:50px;
+    border-radius:50%;background:var(--pri);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+    cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25)
+  }
+  @media(max-width:680px){
+    header{padding:55px 14px 70px}
+    h1{font-size:1.9rem}
+  }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔒 Politique de confidentialité</h1>
+</header>
+
+<div class="wrap">
+  <article class="card">
+    <h2>1. Données collectées</h2>
+    <p>AI-Nego enregistre uniquement les informations indispensables au fonctionnement :</p>
+    <ul>
+      <li><strong>E-mail</strong> : création de compte, synchronisation multi-appareils, récupération de mot de passe ;</li>
+      <li><strong>Progression&nbsp;de&nbsp;jeu</strong> : scores, niveaux débloqués, badges.</li>
+    </ul>
+
+    <h2>2. Finalité &amp; base légale</h2>
+    <p>Ces données servent à&nbsp;:</p>
+    <ol>
+      <li>Fournir les fonctionnalités de quiz, classement et coaching ;</li>
+      <li>Établir des statistiques anonymes pour améliorer l’expérience.</li>
+    </ol>
+    <p>Le traitement repose sur <em>l’exécution du contrat</em> (CGU) et l’<em>intérêt légitime</em> d’amélioration produit.</p>
+
+    <h2>3. Conservation</h2>
+    <p>Les informations sont conservées tant que votre compte reste actif.  
+       Vous pouvez supprimer définitivement vos données en :</p>
+    <ul>
+      <li>Ouvrant l’app → <em>Paramètres › Supprimer mon compte</em> ;</li>
+      <li>Ou en envoyant une demande à <a href="mailto:support@ai-nego.com">support@ai-nego.com</a>.</li>
+    </ul>
+
+    <h2>4. Partage &amp; sous-traitants</h2>
+    <p>Aucune donnée n’est vendue. Les seuls fournisseurs utilisés sont :</p>
+    <ul>
+      <li><strong>Firebase (Google LLC)</strong> – hébergement sécurisé, authentification, base de données.</li>
+      <li><strong>Formspree</strong> – gestion des formulaires de contact.</li>
+    </ul>
+
+    <h2>5. Vos droits RGPD</h2>
+    <p>Conformément au Règlement 2016/679, vous disposez d’un droit d’accès, de rectification, d’opposition,
+       de limitation et d’effacement. Pour l’exercer, contactez-nous à
+       <a href="mailto:support@ai-nego.com">support@ai-nego.com</a>.</p>
+
+    <h2>6. Contact</h2>
+    <p>AI-Nego  
+       Courriel&nbsp;: <a href="mailto:support@ai-nego.com">support@ai-nego.com</a></p>
+
+    <!-- bouton retour -->
+    <a href="index.html" class="back">←&nbsp;Retour au support</a>
+  </article>
+</div>
+
+<div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
+
+<script>
+function toggleTheme(){
+  const root=document.documentElement;
+  const cur=root.getAttribute("data-theme")||"light";
+  root.setAttribute("data-theme", cur==="light"?"dark":"light");
+}
+</script>
+</body>
+</html>
