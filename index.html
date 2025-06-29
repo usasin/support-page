@@ -1,106 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <title>AI-Nego • Support & Présentation</title>
+<meta charset="UTF-8">
+<title>AI-Nego • Support & Présentation</title>
 
-  <!-- SEO & responsive -->
-  <meta name="description"
-        content="AI-Nego – Quiz & Coach IA. Centre d’assistance, FAQ, formulaire de contact, liens vers les stores."/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!-- SEO -->
+<meta name="description"
+      content="AI-Nego – Quiz & Coach IA. Centre d’assistance, FAQ, formulaire de contact, liens vers les stores.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Favicon & polices -->
-  <link rel="icon" href="favicon.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
-  <!-- STYLES -->
-  <style>
-    /* -------- Variables de thème -------- */
-    :root{
-      --pri:#0074ff;         --pri-light:#e7f0ff;
-      --txt:#202124;         --bg:#f5f7fb;      --card:#fff;
-      --pri-dark:#2d8fff;    --txt-dark:#e8eaed;--bg-dark:#0d1117;--card-dark:#161b22;
-    }
-    [data-theme=dark]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
+<style>
+/* ---------------- VARIABLES & THEMES ---------------- */
+:root{
+  --pri:#0074ff;         --pri-light:#e7f0ff;
+  --txt:#1e1f22;         --bg:#f5f7fb;      --card:#ffffffaa;
+  --pri-dark:#2d8fff;    --txt-dark:#e8eaed;--bg-dark:#0d1117;--card-dark:#161b22e6;
+  --radius:14px;
+}
+[data-theme=dark]{--pri:var(--pri-dark);--txt:var(--txt-dark);--bg:var(--bg-dark);--card:var(--card-dark)}
 
-    /* -------- Reset & base -------- */
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:"Poppins",sans-serif;line-height:1.55;background:var(--bg);color:var(--txt);scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",sans-serif;
+  line-height:1.55;
+  background:var(--bg);
+  color:var(--txt);
+  scroll-behavior:smooth;
+}
 
-    h1,h2,h3{font-weight:600;letter-spacing:-.3px}
-    a{color:var(--pri);text-decoration:none}
-    a:hover{text-decoration:underline}
+/* ---------------- UTILS ---------------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.25px}
+a{color:var(--pri);text-decoration:none}
+a:hover{text-decoration:underline}
 
-    /* -------- Layout -------- */
-    header.hero{
-      background:linear-gradient(135deg,#011627 0%,#06346a 50%,#004aad 100%);
-      color:#fff;padding:90px 20px 120px;text-align:center;
-      clip-path:polygon(0 0,100% 0,100% 83%,0 100%);
-    }
-    .container{max-width:1100px;margin:-100px auto 60px;padding:0 18px}
-    section{background:var(--card);border-radius:14px;padding:50px 40px;margin:0 auto 38px;
-            box-shadow:0 8px 28px rgba(0,0,0,.06)}
+/* ---------------- HERO ---------------- */
+header.hero{
+  position:relative;
+  background:linear-gradient(135deg,#021b34 0%,#004aad 100%);
+  color:#fff;
+  padding:100px 20px 130px;
+  text-align:center;
+  clip-path:polygon(0 0,100% 0,100% 83%,0 100%);
+  animation:spark 15s linear infinite;
+}
+@keyframes spark{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.0),0 0 12px 3px rgba(0,116,255,.3)}
+  50%{box-shadow:0 0 0 3px rgba(255,255,255,.15),0 0 18px 6px rgba(0,116,255,.65)}
+  100%{box-shadow:0 0 0 0 rgba(255,255,255,.0),0 0 12px 3px rgba(0,116,255,.3)}
+}
 
-    /* -------- Boutique -------- */
-    .store-badges{display:flex;gap:16px;justify-content:center;margin-top:28px}
-    .store-badges img{height:56px;width:auto;transition:.2s transform}
-    .store-badges img:hover{transform:scale(1.05)}
+/* ---------------- CONTAINER / SECTIONS ---------------- */
+.container{max-width:1100px;margin:-100px auto 60px;padding:0 18px}
+section{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:48px 40px;
+  margin-bottom:38px;
+  backdrop-filter:blur(10px);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+section:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
 
-    /* -------- Carrousel visuels -------- */
-    .carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding-bottom:8px}
-    .carousel img{flex:0 0 auto;width:100%;max-width:760px;border-radius:12px;scroll-snap-align:center;
-                  box-shadow:0 6px 18px rgba(0,0,0,.15)}
-    /* masque dégradé sur les côtés pour l’esthétique */
-    .carousel-wrapper{position:relative}
-    .carousel-wrapper::before,
-    .carousel-wrapper::after{
-      content:'';position:absolute;top:0;bottom:0;width:70px;pointer-events:none;
-      background:linear-gradient(to right,var(--bg) 10%,transparent)
-    }
-    .carousel-wrapper::after{right:0;transform:scaleX(-1)}
+/* ---------------- STORE BADGES ---------------- */
+.store-badges{display:flex;gap:16px;justify-content:center;margin-top:28px}
+.store-badges img{height:56px;width:auto;transition:.25s transform}
+.store-badges img:hover{transform:scale(1.08)}
 
-    /* -------- Cartes FAQ & Méthode -------- */
-    ul.checklist{margin-left:1.2rem}
-    ul.checklist li{margin:6px 0;list-style: "✔️  ";padding-left:.4rem}
+/* ---------------- CAROUSEL ---------------- */
+.carousel-wrapper{position:relative;margin:0 -8px}
+.carousel{
+  display:flex;gap:20px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.carousel::-webkit-scrollbar{display:none}
+.carousel img{
+  flex:0 0 auto;
+  width:100%;max-width:760px;
+  border-radius:var(--radius);
+  scroll-snap-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  transition:transform .5s;
+}
+.carousel img:hover{transform:translateY(-6px)}
 
-    /* -------- Formulaires -------- */
-    form{display:flex;flex-direction:column;gap:14px;margin-top:18px}
-    input,textarea{font:inherit;border:1px solid #ccd1d6;border-radius:6px;padding:12px 14px}
-    textarea{min-height:120px;resize:vertical}
-    button[type=submit]{background:var(--pri);color:#fff;border:0;padding:14px 18px;border-radius:6px;font-weight:600;
-                        cursor:pointer;transition:.2s}
-    button[type=submit]:hover{background:#005ed6}
+/* mask gradient */
+.carousel-wrapper::before,.carousel-wrapper::after{
+  content:'';position:absolute;top:0;bottom:0;width:70px;pointer-events:none;
+  background:linear-gradient(to right,var(--bg) 5%,transparent)
+}
+.carousel-wrapper::after{right:0;transform:scaleX(-1)}
 
-    /* -------- Theme toggle --------*/
-    .theme-toggle{position:fixed;right:20px;bottom:20px;width:50px;height:50px;border-radius:50%;
-      background:var(--pri);display:flex;align-items:center;justify-content:center;
-      color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:10}
+/* ---------------- CHECKLIST ---------------- */
+ul.checklist{margin-left:1.25rem}
+ul.checklist li{list-style:"✔︎ ";padding-left:.4rem;margin:8px 0}
 
-    /* -------- Responsive -------- */
-    @media(max-width:680px){
-      header.hero{padding:70px 16px 90px}
-      h1{font-size:2.1rem}
-    }
-  </style>
+/* ---------------- FORM ---------------- */
+form{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+input,textarea{
+  font:inherit;border:1px solid #ccd1d6;border-radius:6px;
+  padding:12px 14px;background:#fff
+}
+textarea{min-height:120px;resize:vertical}
+.glow-btn,button[type=submit]{
+  position:relative;
+  background:var(--pri);
+  border:0;border-radius:6px;
+  color:#fff;font-weight:600;
+  padding:14px 18px;
+  cursor:pointer;
+  overflow:hidden;
+  transition:background .25s ease;
+}
+.glow-btn:hover,button[type=submit]:hover{background:#005ee0}
+.glow-btn::before{ /* sparkle trace */
+  content:'';position:absolute;top:-150%;left:-50%;width:60%;height:300%;
+  background:linear-gradient(60deg,transparent 0%,rgba(255,255,255,.8) 50%,transparent 100%);
+  transform:rotate(25deg);
+  animation:trail 2.8s infinite linear;
+}
+@keyframes trail{
+  0%{left:-60%}100%{left:160%}
+}
+
+/* ---------------- THEME TOGGLE ---------------- */
+.theme-toggle{
+  position:fixed;right:20px;bottom:20px;
+  width:50px;height:50px;border-radius:50%;
+  background:var(--pri);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:22px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:10;
+  transition:transform .4s
+}
+.theme-toggle:hover{transform:rotate(360deg)}
+
+/* ---------------- RGPD CARD ---------------- */
+.rgpd-card{font-size:.96rem;line-height:1.55}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:680px){
+  header.hero{padding:70px 16px 95px}
+  h1{font-size:2.05rem}
+  .carousel img{max-width:90vw}
+}
+</style>
 </head>
 <body>
 
 <!-- ========= HERO ========= -->
 <header class="hero" data-aos="fade-down">
-  <h1 style="font-size:2.8rem;margin-bottom:18px">AI-Nego Quiz Vente Pro</h1>
+  <h1 style="font-size:2.8rem;margin-bottom:18px">AI-Nego • Coach & Quiz Vente</h1>
   <p style="opacity:.9;font-size:1.1rem">Ton accompagnateur IA pour devenir un as de la négo.</p>
 
   <!-- Badges stores -->
   <div class="store-badges" data-aos="zoom-in" data-aos-delay="400">
-    <a href="https://play.google.com/store/apps/details?id=com.quiz_commercial2024.quiz_commercial2024">
-      <img src="https://developer.android.com/images/brand/fr_generic_rgb_wo_45.png"
-           alt="Disponible sur Google Play">
+    <a class="glow-btn" href="https://play.google.com/store/apps/details?id=com.quiz_commercial2024.quiz_commercial2024" aria-label="Google Play">
+      <img src="https://developer.android.com/images/brand/fr_generic_rgb_wo_45.png" alt="Disponible sur Google Play" style="height:38px;filter:brightness(0) invert(1)">
     </a>
+
     <!-- Lien App Store : remplace # quand tu l’auras -->
-    <a href="#" onclick="alert('Lien App Store à venir !');return false;">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-           alt="Bientôt sur l’App Store">
+    <a class="glow-btn" href="#" onclick="alert('Lien App Store à venir !');return false;" aria-label="App Store">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Bientôt sur l’App Store" style="height:38px">
     </a>
   </div>
 </header>
@@ -109,34 +174,30 @@
 
   <!-- ========= CARROUSEL VISUELS ========= -->
   <section data-aos="fade-up">
-    <h2>✨ Aperçu de l’app</h2>
-    <p style="margin-bottom:24px">Un avant-goût des écrans clés&nbsp;:</p>
+    <h2>✨ Aperçu de l’appli</h2>
+    <p style="margin-bottom:24px">Un avant-goût des écrans clés :</p>
 
     <div class="carousel-wrapper">
       <div class="carousel">
-        <!-- Télécharge les visuels dans ton repo et mets le bon chemin -->
         <img src="visuels/sam-parcours.png"  alt="Parcours adapté à chaque métier">
         <img src="visuels/sam-method.png"    alt="La méthode 6 étapes">
-        <img src="visuels/sam-defi.png"      alt="Défi tes amis">
+        <img src="visuels/sam-defi.png"      alt="Défie tes amis">
         <img src="visuels/sam-quiz.png"      alt="Quiz chronométrés">
       </div>
     </div>
   </section>
 
-  <!-- ========= MÉTHODE 6 ÉTAPES ========= -->
+  <!-- ========= MÉTHODE ========= -->
   <section data-aos="fade-up" data-aos-delay="100">
-    <h2>⚡ Méthode 6 étapes&nbsp;<span style="background:var(--pri-light);color:var(--pri);font-size:.8rem;padding:2px 8px;border-radius:4px">Universelle</span></h2>
+    <h2>⚡ Méthode 6 étapes <span style="background:var(--pri-light);color:var(--pri);font-size:.8rem;padding:2px 8px;border-radius:4px">Universelle</span></h2>
     <ul class="checklist">
-      <li>Accroche personnalisée</li>
-      <li>Découverte du besoin</li>
-      <li>Déclencheur émotionnel</li>
-      <li>Proposition de valeur</li>
-      <li>Réponses aux objections</li>
-      <li>Closing &amp; accord final</li>
+      <li>Accroche personnalisée</li><li>Découverte du besoin</li>
+      <li>Déclencheur émotionnel</li><li>Proposition de valeur</li>
+      <li>Réponses aux objections</li><li>Closing &amp; accord final</li>
     </ul>
   </section>
 
-  <!-- ========= QUIZ & GAMIFICATION ========= -->
+  <!-- ========= QUIZ ========= -->
   <section data-aos="fade-up" data-aos-delay="200">
     <h2>🎮 Quiz, IA &amp; Gamification</h2>
     <p>Effet de testing, répétition espacée, badges, classement mondial et défis multi-joueurs.</p>
@@ -144,45 +205,61 @@
 
   <!-- ========= FAQ ========= -->
   <section data-aos="fade-up" data-aos-delay="300">
-    <h2>FAQ</h2>
+    <h2>❓ FAQ</h2>
     <p><strong>Supprimer mon compte</strong><br>
-       App&nbsp;› <em>Paramètres</em> › <em>Supprimer mon compte</em>, puis confirme.</p>
+       App › <em>Paramètres</em> › <em>Supprimer mon compte</em> puis confirme.</p>
     <p><strong>Mot de passe oublié</strong><br>
-       Écran de connexion&nbsp;› <em>Mot de passe oublié</em>.</p>
+       Écran de connexion › <em>Mot de passe oublié</em>.</p>
   </section>
 
-  <!-- ========= FORMULAIRES ========= -->
+  <!-- ========= FORMULAIRE ========= -->
   <section data-aos="fade-up" data-aos-delay="400">
     <h2>📝 Nous contacter</h2>
-    <p>Une question&nbsp;? Un bug&nbsp;? Écris-nous via le formulaire&nbsp;– réponse sous 24&nbsp;h&nbsp;!</p>
+    <p>Une question ? Un bug ? Écris-nous – réponse sous 24 h&nbsp;!</p>
 
-    <!-- Remplace l’URL Formspree par la tienne -->
     <form action="https://formspree.io/f/xvgrdkgl" method="POST">
       <input type="text" name="name" placeholder="Votre nom" required>
       <input type="email" name="_replyto" placeholder="Votre e-mail" required>
       <textarea name="message" placeholder="Décrivez votre problème…" required></textarea>
-      <button type="submit">Envoyer</button>
+      <button type="submit" class="glow-btn">Envoyer</button>
     </form>
-    <p style="font-size:.8rem;margin-top:6px;color:#666">En envoyant ce formulaire, vous acceptez notre politique de confidentialité.</p>
+    <p style="font-size:.8rem;margin-top:6px;color:#666">
+      En envoyant ce formulaire, vous acceptez notre politique de confidentialité.
+    </p>
   </section>
+
+  <!-- ========= RGPD ========= -->
+  <section class="rgpd-card" data-aos="fade-up" data-aos-delay="500">
+    <h2>🔒 Données &amp; RGPD</h2>
+    <p>
+      AI-Nego collecte uniquement les informations indispensables
+      (e-mail, progression). Aucune donnée n’est vendue. Vous pouvez
+      demander la suppression définitive de vos données à tout moment
+      depuis l’app (<em>Paramètres › Supprimer mon compte</em>) ou par
+      message.
+    </p>
+    <p>
+      Détails : <a href="https://usasin.github.io/support-page/politique-confidentialite.html" target="_blank">politique de confidentialité</a>.
+    </p>
+  </section>
+
 </div>
 
 <footer style="text-align:center;font-size:.8rem;color:#888;margin:40px 0" data-aos="fade">
-  © 2025 AI-Nego — Tous droits réservés
+  © 2025 AI-Nego — Tous droits réservés • <a href="mailto:support@ai-nego.com">2025@ai-nego.com</a>
 </footer>
 
-<!-- Thème clair / sombre -->
+<!-- THEME TOGGLE -->
 <div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
 
-<!-- AOS + script -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init({duration:700,once:true});</script>
 <script>
- function toggleTheme(){
-   const root=document.documentElement;
-   const t=root.getAttribute("data-theme")||"light";
-   root.setAttribute("data-theme", t==="light"?"dark":"light");
- }
+function toggleTheme(){
+  const root=document.documentElement;
+  const t=root.getAttribute("data-theme")||"light";
+  root.setAttribute("data-theme", t==="light"?"dark":"light");
+}
 </script>
 </body>
 </html>
