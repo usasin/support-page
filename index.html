@@ -3,278 +3,461 @@
 <head>
   <meta charset="UTF-8">
   <title>AI-Nego • Support & Présentation</title>
-
+  
   <!-- SEO -->
-  <meta name="description"
-        content="AI-Nego – Quiz & Coach IA. Centre d’assistance, FAQ, formulaire de contact, liens vers les stores.">
+  <meta name="description" content="AI-Nego – Quiz & Coach IA. Centre d'assistance, FAQ, formulaire de contact, liens vers les stores.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
+  <!-- Favicon -->
   <link rel="icon" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#e7f0ff',
+              DEFAULT: '#0074ff',
+              dark: '#005ee0',
+            },
+            dark: {
+              bg: '#0d1117',
+              card: '#161b22e6',
+              text: '#e8eaed',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          borderRadius: {
+            xl: '14px',
+          },
+          animation: {
+            'glow': 'glow 2.8s linear infinite',
+            'trail': 'trail 2.8s infinite',
+            'spark': 'spark 15s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            glow: {
+              '50%': { opacity: '0.25' }
+            },
+            trail: {
+              '100%': { left: '160%' }
+            },
+            spark: {
+              '0%': { boxShadow: '0 0 0 0 rgba(255,255,255,0), 0 0 12px 4px rgba(0,116,255,.30)' },
+              '50%': { boxShadow: '0 0 0 3px rgba(255,255,255,.15), 0 0 20px 7px rgba(0,116,255,.70)' },
+              '100%': { boxShadow: '0 0 0 0 rgba(255,255,255,0), 0 0 12px 4px rgba(0,116,255,.30)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- AOS Animation -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-
-  <!-- =================== STYLES =================== -->
+  
+  <!-- Custom CSS -->
   <style>
-  /* ---------- Variables & thèmes ---------- */
-  :root{
-    --pri:#0074ff;         --pri-light:#e7f0ff;
-    --txt:#1e1f22;         --bg:#f5f7fb;      --card:#ffffffcc;
-    --pri-dark:#2d8fff;    --txt-dark:#e8eaed;--bg-dark:#0d1117;--card-dark:#161b22e6;
-    --radius:14px;
-  }
-  [data-theme="dark"]{
-    --pri:var(--pri-dark);--txt:var(--txt-dark);
-    --bg:var(--bg-dark);  --card:var(--card-dark);
-  }
-
-  /* ---------- Reset ---------- */
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:"Poppins",sans-serif;
-    line-height:1.55;
-    background:var(--bg);color:var(--txt);
-    scroll-behavior:smooth;
-  }
-  h1,h2,h3{font-weight:600;letter-spacing:-.25px}
-  a{color:var(--pri);text-decoration:none}
-  a:hover{text-decoration:underline}
-
-  /* ---------- Hero ---------- */
-  header.hero{
-    background:linear-gradient(135deg,#021b34 0%,#004aad 100%);
-    color:#fff;padding:100px 20px 130px;text-align:center;
-    clip-path:polygon(0 0,100% 0,100% 83%,0 100%);
-    position:relative;
-    animation:spark 15s linear infinite;
-  }
-  @keyframes spark{
-    0%  {box-shadow:0 0 0 0 rgba(255,255,255,0),0 0 12px 4px rgba(0,116,255,.30)}
-    50% {box-shadow:0 0 0 3px rgba(255,255,255,.15),0 0 20px 7px rgba(0,116,255,.70)}
-    100%{box-shadow:0 0 0 0 rgba(255,255,255,0),0 0 12px 4px rgba(0,116,255,.30)}
-  }
-
-  /* ---------- Container & sections ---------- */
-  .container{max-width:1100px;margin:-100px auto 60px;padding:0 18px}
-  section{
-    background:var(--card);
-    border-radius:var(--radius);
-    padding:48px 40px;margin-bottom:38px;
-    backdrop-filter:blur(10px);
-    transition:transform .25s,box-shadow .25s;
-  }
-  section:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
-
-  /* ---------- Store badges ---------- */
-  .store-badges{display:flex;gap:16px;justify-content:center;margin-top:32px}
-  .store-badges a{position:relative;border-radius:10px;overflow:hidden}
-  .store-badges img{height:40px;width:auto;display:block}
-  .store-badges a::before{ /* halo animé */
-    content:'';position:absolute;inset:-2px;
-    border-radius:12px;z-index:-1;
-    background:linear-gradient(45deg,#23a4ff,#1d53ff);
-    filter:blur(8px);opacity:.55;
-    animation:glow 2.8s linear infinite;
-  }
-  @keyframes glow{50%{opacity:.25}}
-
-  /* ---------- Carousel ---------- */
-  .carousel-wrapper{position:relative;margin:0 -8px}
-  .carousel{
-    display:flex;gap:20px;
-    overflow-x:auto;scroll-snap-type:x mandatory;
-    scrollbar-width:none; -ms-overflow-style:none;
-  }
-  .carousel::-webkit-scrollbar{display:none}
-  .carousel img{
-    flex:0 0 auto;
-    width:100%;max-width:720px;
-    border-radius:var(--radius);
-    scroll-snap-align:center;
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
-    transition:transform .5s;
-  }
-  .carousel img:hover{transform:translateY(-6px)}
-
-  /* Masque (désactivé mobile) */
-  .carousel-wrapper::before,.carousel-wrapper::after{
-    content:'';position:absolute;top:0;bottom:0;width:70px;pointer-events:none;
-    background:linear-gradient(to right,var(--bg) 5%,transparent)
-  }
-  .carousel-wrapper::after{right:0;transform:scaleX(-1)}
-
-  /* ---------- Checklist ---------- */
-  ul.checklist{margin-left:1.25rem}
-  ul.checklist li{list-style:"✔︎ ";padding-left:.4rem;margin:8px 0}
-
-  /* ---------- Formulaire ---------- */
-  form{display:flex;flex-direction:column;gap:14px;margin-top:22px}
-  input,textarea{
-    font:inherit;border:1px solid #ccd1d6;border-radius:6px;
-    padding:12px 14px;background:#fff
-  }
-  textarea{min-height:120px;resize:vertical}
-  .glow-btn,button[type=submit]{
-    position:relative;background:var(--pri);border:0;border-radius:6px;
-    color:#fff;font-weight:600;padding:14px 18px;cursor:pointer;
-    overflow:hidden;transition:background .25s;
-  }
-  .glow-btn:hover,button[type=submit]:hover{background:#005ee0}
-  .glow-btn::before,button[type=submit]::before{
-    content:'';position:absolute;top:-150%;left:-60%;width:60%;height:300%;
-    background:linear-gradient(60deg,transparent 0%,rgba(255,255,255,.75) 50%,transparent 100%);
-    transform:rotate(25deg);animation:trail 2.8s infinite;
-  }
-  @keyframes trail{100%{left:160%}}
-
-  /* ---------- RGPD ---------- */
-  #rgpd{clip-path:none}
-  #rgpd p{max-width:600px;margin:auto}
-
-  /* ---------- Theme toggle ---------- */
-  .theme-toggle{
-    position:fixed;right:20px;bottom:20px;width:50px;height:50px;
-    border-radius:50%;background:var(--pri);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:22px;cursor:pointer;
-    box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:10;
-    transition:transform .5s;
-  }
-  .theme-toggle:hover{transform:rotate(360deg)}
-
-  /* ---------- Responsive ---------- */
-  @media(max-width:700px){
-    header.hero{padding:70px 16px 95px}
-    h1{font-size:2.1rem}
-    .carousel img{max-width:90vw}
-    .carousel-wrapper::before,.carousel-wrapper::after{display:none} /* masque off */
-  }
+    body {
+      @apply bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-dark-text font-poppins transition-colors duration-300;
+    }
+    
+    .glow-btn::before, button[type=submit]::before {
+      content: '';
+      position: absolute;
+      top: -150%;
+      left: -60%;
+      width: 60%;
+      height: 300%;
+      background: linear-gradient(60deg, transparent 0%, rgba(255,255,255,.75) 50%, transparent 100%);
+      transform: rotate(25deg);
+      animation: trail 2.8s infinite;
+    }
+    
+    .carousel-mask::before, .carousel-mask::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 70px;
+      pointer-events: none;
+      background: linear-gradient(to right, var(--tw-gradient-stops));
+    }
+    
+    .carousel-mask::before {
+      @apply left-0 from-gray-50/100 via-gray-50/5 to-gray-50/0 dark:from-dark-bg/100 dark:via-dark-bg/5 dark:to-dark-bg/0;
+    }
+    
+    .carousel-mask::after {
+      @apply right-0 scale-x-[-1] from-gray-50/100 via-gray-50/5 to-gray-50/0 dark:from-dark-bg/100 dark:via-dark-bg/5 dark:to-dark-bg/0;
+    }
+    
+    @media (max-width: 768px) {
+      .carousel-mask::before, .carousel-mask::after {
+        display: none;
+      }
+    }
+    
+    .checklist li {
+      @apply relative pl-6 mb-2;
+    }
+    
+    .checklist li::before {
+      content: '✓';
+      @apply absolute left-0 text-primary;
+    }
+    
+    .hero-clip {
+      clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
+    }
+    
+    .ai-icon {
+      @apply inline-block mr-2;
+    }
   </style>
 </head>
 
-<body>
-
-<!-- ================= HERO ================= -->
-<header class="hero" data-aos="fade-down">
-  <h1 style="font-size:2.8rem;margin-bottom:18px">
-    AI-Nego • Coach & Quiz Vente
-  </h1>
-  <p style="opacity:.9;font-size:1.1rem">
-    Ton accompagnateur IA pour devenir un as de la négo.
-  </p>
-
-  <!-- Badges stores -->
-  <div class="store-badges" data-aos="zoom-in" data-aos-delay="400">
-    <a class="glow-btn" href="https://play.google.com/store/apps/details?id=com.quiz_commercial2024.quiz_commercial2024">
-      <img src="https://play.google.com/intl/fr/badges/static/images/badges/fr_badge_web_generic.png"
-           alt="Disponible sur Google Play">
-    </a>
-    <!-- Remplace # dès que tu as l’URL App Store -->
-    <a class="glow-btn" href="#" onclick="alert('Lien App Store à venir !');return false;">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-           alt="Bientôt sur l’App Store">
-    </a>
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- ============ CARROUSEL ============ -->
-  <section data-aos="fade-up">
-    <h2>✨ Aperçu de l’appli</h2>
-    <p style="margin-bottom:24px">Un avant-goût des écrans clés :</p>
-    <div class="carousel-wrapper">
-      <div class="carousel">
-        <img src="visuels/sam-parcours.png"  alt="Parcours adapté à chaque métier">
-        <img src="visuels/sam-method.png"    alt="La méthode 6 étapes">
-        <img src="visuels/sam-defi.png"      alt="Défie tes amis">
-        <img src="visuels/sam-quiz.png"      alt="Quiz chronométrés">
+<body class="min-h-screen">
+  <!-- ================= HERO ================= -->
+  <header class="hero-clip bg-gradient-to-br from-blue-900 to-blue-600 text-white py-24 px-5 text-center relative animate-spark" data-aos="fade-down">
+    <div class="max-w-4xl mx-auto">
+      <div class="inline-block mb-4 animate-float">
+        <i class="ai-icon fas fa-robot text-4xl"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        AI-Nego • Coach & Quiz Vente
+      </h1>
+      <p class="text-lg md:text-xl opacity-90 mb-8">
+        Ton accompagnateur IA pour devenir un as de la négociation
+      </p>
+      
+      <!-- Badges stores -->
+      <div class="store-badges flex flex-wrap justify-center gap-4" data-aos="zoom-in" data-aos-delay="400">
+        <a href="https://play.google.com/store/apps/details?id=com.quiz_commercial2024.quiz_commercial2024" 
+           class="glow-btn relative overflow-hidden rounded-lg hover:scale-105 transition-transform duration-300">
+          <span class="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg opacity-55 blur-md animate-glow"></span>
+          <img src="https://play.google.com/intl/fr/badges/static/images/badges/fr_badge_web_generic.png" 
+               alt="Disponible sur Google Play" class="h-12">
+        </a>
+        
+        <a href="#" onclick="alert('Lien App Store à venir !');return false;" 
+           class="glow-btn relative overflow-hidden rounded-lg hover:scale-105 transition-transform duration-300">
+          <span class="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg opacity-55 blur-md animate-glow"></span>
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+               alt="Bientôt sur l'App Store" class="h-12">
+        </a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ============ MÉTHODE 6 ÉTAPES ============ -->
-  <section data-aos="fade-up" data-aos-delay="100">
-    <h2>⚡ Méthode 6 étapes
-      <span style="background:var(--pri-light);color:var(--pri);font-size:.8rem;padding:2px 8px;border-radius:4px">
-        Universelle
-      </span>
-    </h2>
-    <ul class="checklist">
-      <li>Accroche personnalisée</li><li>Découverte du besoin</li>
-      <li>Déclencheur émotionnel</li><li>Proposition de valeur</li>
-      <li>Réponses aux objections</li><li>Closing &amp; accord final</li>
-    </ul>
-  </section>
+  <div class="container max-w-6xl mx-auto px-4 md:px-6 -mt-20 mb-16">
+    <!-- ============ CARROUSEL ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center">
+        <i class="fas fa-images text-primary mr-3"></i>
+        Aperçu de l'appli
+      </h2>
+      <p class="mb-6 text-gray-600 dark:text-gray-300">Un avant-goût des écrans clés :</p>
+      
+      <div class="carousel-mask relative">
+        <div class="carousel flex gap-5 overflow-x-auto scroll-snap-x-mandatory scrollbar-hide pb-4">
+          <div class="flex-none w-11/12 md:w-auto scroll-snap-align-center">
+            <img src="visuels/sam-parcours.png" alt="Parcours adapté à chaque métier" 
+                 class="w-full max-w-2xl rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+          </div>
+          <div class="flex-none w-11/12 md:w-auto scroll-snap-align-center">
+            <img src="visuels/sam-method.png" alt="La méthode 6 étapes" 
+                 class="w-full max-w-2xl rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+          </div>
+          <div class="flex-none w-11/12 md:w-auto scroll-snap-align-center">
+            <img src="visuels/sam-defi.png" alt="Défie tes amis" 
+                 class="w-full max-w-2xl rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+          </div>
+          <div class="flex-none w-11/12 md:w-auto scroll-snap-align-center">
+            <img src="visuels/sam-quiz.png" alt="Quiz chronométrés" 
+                 class="w-full max-w-2xl rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ============ QUIZ & GAMIFICATION ============ -->
-  <section data-aos="fade-up" data-aos-delay="200">
-    <h2>🎮 Quiz, IA &amp; Gamification</h2>
-    <p>
-      Effet de testing, répétition espacée, badges, classement mondial
-      et défis multi-joueurs.
-    </p>
-  </section>
+    <!-- ============ MÉTHODE 6 ÉTAPES ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+        <i class="fas fa-bolt text-primary mr-3"></i>
+        Méthode 6 étapes
+        <span class="ml-3 bg-primary-light text-primary text-sm font-medium px-3 py-1 rounded-full">
+          Universelle
+        </span>
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <ul class="checklist space-y-3">
+          <li class="flex items-start">
+            <span class="mr-2">1.</span>
+            <span>Accroche personnalisée</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">2.</span>
+            <span>Découverte du besoin</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">3.</span>
+            <span>Déclencheur émotionnel</span>
+          </li>
+        </ul>
+        
+        <ul class="checklist space-y-3">
+          <li class="flex items-start">
+            <span class="mr-2">4.</span>
+            <span>Proposition de valeur</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">5.</span>
+            <span>Réponses aux objections</span>
+          </li>
+          <li class="flex items-start">
+            <span class="mr-2">6.</span>
+            <span>Closing & accord final</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="mt-8 bg-primary-light/30 dark:bg-primary/10 p-4 rounded-lg border border-primary/20">
+        <p class="text-primary-dark dark:text-primary-light font-medium">
+          <i class="fas fa-lightbulb mr-2"></i>
+          Notre méthode a été testée et optimisée par des experts en négociation.
+        </p>
+      </div>
+    </section>
 
-  <!-- ============ FAQ ============ -->
-  <section data-aos="fade-up" data-aos-delay="300">
-    <h2>❓ FAQ</h2>
-    <p><strong>Supprimer mon compte</strong><br>
-       App › <em>Paramètres</em> › <em>Supprimer mon compte</em> puis confirme.</p>
-    <p><strong>Mot de passe oublié</strong><br>
-       Écran de connexion › <em>Mot de passe oublié</em>.</p>
-  </section>
+    <!-- ============ QUIZ & GAMIFICATION ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center">
+        <i class="fas fa-gamepad text-primary mr-3"></i>
+        Quiz, IA & Gamification
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <p class="mb-6 text-gray-600 dark:text-gray-300">
+            Effet de testing, répétition espacée, badges, classement mondial
+            et défis multi-joueurs.
+          </p>
+          
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-primary-light text-primary px-3 py-1 rounded-full text-sm font-medium">
+              <i class="fas fa-trophy mr-1"></i> Badges
+            </span>
+            <span class="bg-primary-light text-primary px-3 py-1 rounded-full text-sm font-medium">
+              <i class="fas fa-globe mr-1"></i> Classement
+            </span>
+            <span class="bg-primary-light text-primary px-3 py-1 rounded-full text-sm font-medium">
+              <i class="fas fa-users mr-1"></i> Multi-joueurs
+            </span>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-center">
+          <div class="relative w-40 h-40">
+            <div class="absolute inset-0 bg-primary/10 rounded-full animate-pulse"></div>
+            <div class="absolute inset-4 bg-primary/20 rounded-full animate-pulse delay-75"></div>
+            <div class="absolute inset-8 bg-primary/30 rounded-full flex items-center justify-center">
+              <i class="fas fa-brain text-4xl text-primary"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ============ FORMULAIRE ============ -->
-  <section data-aos="fade-up" data-aos-delay="400">
-    <h2>📝 Nous contacter</h2>
-    <p>Une question ? Un bug ? Écris-nous – réponse sous 24 h !</p>
+    <!-- ============ FAQ ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+        <i class="fas fa-question-circle text-primary mr-3"></i>
+        Foire aux questions
+      </h2>
+      
+      <div class="space-y-6">
+        <div class="faq-item border-b border-gray-200 dark:border-gray-700 pb-4">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-user-slash text-primary mr-3"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Supprimer mon compte</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-1">
+                App › <span class="font-medium">Paramètres</span> › <span class="font-medium">Supprimer mon compte</span> puis confirme.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item border-b border-gray-200 dark:border-gray-700 pb-4">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-key text-primary mr-3"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Mot de passe oublié</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-1">
+                Écran de connexion › <span class="font-medium">Mot de passe oublié</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-sync-alt text-primary mr-3"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg">Synchronisation des données</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-1">
+                Tes progrès sont automatiquement sauvegardés sur le cloud lorsque tu es connecté.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <form action="https://formspree.io/f/xvgrdkgl" method="POST">
-      <input type="text"   name="name"      placeholder="Votre nom"        required>
-      <input type="email"  name="_replyto"  placeholder="Votre e-mail"     required>
-      <textarea name="message" placeholder="Décrivez votre problème…" required></textarea>
-      <button type="submit" class="glow-btn">Envoyer</button>
-    </form>
-    <p style="font-size:.8rem;margin-top:6px;color:#666">
-      En envoyant ce formulaire, vous acceptez notre politique de confidentialité.
-    </p>
-  </section>
+    <!-- ============ FORMULAIRE ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center">
+        <i class="fas fa-envelope text-primary mr-3"></i>
+        Nous contacter
+      </h2>
+      <p class="mb-6 text-gray-600 dark:text-gray-300">Une question ? Un bug ? Écris-nous – réponse sous 24 h !</p>
+      
+      <form action="https://formspree.io/f/xvgrdkgl" method="POST" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Votre nom</label>
+          <input type="text" id="name" name="name" required 
+                 class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent transition">
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Votre e-mail</label>
+          <input type="email" id="email" name="_replyto" required 
+                 class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent transition">
+        </div>
+        
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Votre message</label>
+          <textarea id="message" name="message" rows="5" required 
+                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent transition"></textarea>
+        </div>
+        
+        <button type="submit" class="glow-btn relative bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg w-full md:w-auto transition-colors duration-300">
+          <i class="fas fa-paper-plane mr-2"></i> Envoyer
+        </button>
+        
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          En envoyant ce formulaire, vous acceptez notre 
+          <a href="#" class="underline hover:text-primary">politique de confidentialité</a>.
+        </p>
+      </form>
+    </section>
 
-  <!-- ============ RGPD ============ -->
-  <section id="rgpd" class="rgpd-card" data-aos="fade-up" data-aos-delay="500">
-    <h2>🔒 Données &amp; RGPD</h2>
-    <p>
-      AI-Nego collecte uniquement les informations indispensables
-      (e-mail, progression). Aucune donnée n’est vendue.  
-      Vous pouvez demander la suppression définitive de vos données à
-      tout moment depuis l’app
-      (<em>Paramètres › Supprimer mon compte</em>) ou par message.
-    </p>
-    <p>Détails :
-      <a href="https://usasin.github.io/support-page/politique-confidentialite.html" target="_blank">
-        politique de confidentialité
-      </a>.
-    </p>
-  </section>
+    <!-- ============ RGPD ============ -->
+    <section class="bg-white/80 dark:bg-dark-card backdrop-blur-lg rounded-xl p-8 md:p-10 mb-8 shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+        <i class="fas fa-lock text-primary mr-3"></i>
+        Données & RGPD
+      </h2>
+      
+      <div class="max-w-3xl mx-auto space-y-4 text-gray-600 dark:text-gray-300">
+        <p>
+          AI-Nego collecte uniquement les informations indispensables
+          (e-mail, progression). Aucune donnée n'est vendue.
+        </p>
+        
+        <p>
+          Vous pouvez demander la suppression définitive de vos données à
+          tout moment depuis l'app
+          (<span class="font-medium">Paramètres › Supprimer mon compte</span>) ou par message.
+        </p>
+        
+        <div class="mt-6">
+          <a href="https://usasin.github.io/support-page/politique-confidentialite.html" target="_blank" 
+             class="inline-flex items-center text-primary font-medium hover:underline">
+            <i class="fas fa-file-alt mr-2"></i> Lire notre politique de confidentialité
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 
-</div><!-- /container -->
+  <!-- ============ FOOTER ============ -->
+  <footer class="text-center py-10 text-gray-500 dark:text-gray-400 text-sm" data-aos="fade">
+    <div class="container max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+        <a href="#" class="hover:text-primary transition-colors">
+          <i class="fab fa-twitter mr-1"></i> Twitter
+        </a>
+        <a href="#" class="hover:text-primary transition-colors">
+          <i class="fab fa-instagram mr-1"></i> Instagram
+        </a>
+        <a href="#" class="hover:text-primary transition-colors">
+          <i class="fab fa-linkedin mr-1"></i> LinkedIn
+        </a>
+        <a href="mailto:support@ai-nego.com" class="hover:text-primary transition-colors">
+          <i class="fas fa-envelope mr-1"></i> support@ai-nego.com
+        </a>
+      </div>
+      
+      <p>© 2025 AI-Nego — Tous droits réservés</p>
+    </div>
+  </footer>
 
-<footer style="text-align:center;font-size:.8rem;color:#888;margin:40px 0" data-aos="fade">
-  © 2025 AI-Nego — Tous droits réservés • <a href="mailto:support@ai-nego.com">2025@ai-nego.com</a>
-</footer>
+  <!-- ============ Theme toggle ============ -->
+  <button onclick="toggleTheme()" 
+          class="fixed right-6 bottom-6 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center text-2xl shadow-lg hover:shadow-xl hover:rotate-180 transition-all duration-500 z-50"
+          title="Mode clair / sombre">
+    <i class="fas fa-moon dark:hidden"></i>
+    <i class="fas fa-sun hidden dark:block"></i>
+  </button>
 
-<!-- ============ Theme toggle ============ -->
-<div class="theme-toggle" onclick="toggleTheme()" title="Mode clair / sombre">🌓</div>
-
-<!-- ============ Scripts ============ -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({duration:700,once:true});</script>
-<script>
-function toggleTheme(){
-  const root=document.documentElement;
-  const cur=root.getAttribute("data-theme")||"light";
-  root.setAttribute("data-theme",cur==="light"?"dark":"light");
-}
-</script>
+  <!-- ============ Scripts ============ -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize animations
+    AOS.init({
+      duration: 700,
+      once: true,
+      easing: 'ease-out-quart'
+    });
+    
+    // Theme toggle function
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentTheme = root.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+    
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
 </body>
-</html>
+</html>>
